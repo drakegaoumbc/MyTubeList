@@ -1,0 +1,21 @@
+<div class="well"><h3>MY VIDEO HISTORY</h3></div>
+
+<div class='container'>
+	<div class='row'>
+		<div class='col-lg-3 col-md-4 col-sm-6' *ngFor="let video of videoVisited">
+			<img id='tn' class="img-thumbnail" [src]="video.thumbnailUrl | safe" atl="Not Found" width="280px" height="158px">
+			<div class='container-fluid'>
+				<div class='row'>
+					<div class='col-sm-2'>
+						<button class='btn btn-primary btn-sm'>
+							<a [href]='video.url | safe'>Play</a>
+						</button>
+					</div>
+					<div class='col-sm-2'>
+						<button class='btn btn-default btn-sm' (click)="delVideo(video)">Delete</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

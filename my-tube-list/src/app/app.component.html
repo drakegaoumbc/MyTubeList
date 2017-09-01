@@ -1,0 +1,43 @@
+<!--The whole content below can be removed with the new code.-->
+<nav class='navbar navbar-toggleable-md navbar-inverse'>
+	<div class='container-fluid'>
+		<div class='navbar-header'>
+			<button type="button" class='navbar-toggle collapsed'>
+				<span class='sr-only'>Toggle</span>
+				<span class='icon-bar'></span>
+				<span class='icon-bar'></span>
+				<span class='icon-bar'></span>
+			</button>
+			<a class='navbar-brand'>MyTubeList</a>
+		</div>
+		<div class='collapse navbar-collapse' id='navbarCollapse'>
+			<ul *ngIf="authService.isAuthenticated()" class='nav navbar-nav in'>
+				<li routerLinkActive = "active" class='nav-item'>
+					<a class='nav-link' routerLink='/home'>MyTube Home</a>
+				</li>
+				<li routerLinkActive = "active" class='nav-item'>
+					<a class='nav-link' routerLink='/visited'>My Collections</a>
+				</li>
+			</ul>
+
+			<ul *ngIf="!authService.isAuthenticated()" class='nav navbar-nav navbar-right'>
+				<li>
+					<a class='login_nav_right' (click)="login()">LogIn/SignUp</a>
+				</li>
+			</ul>
+
+			<ul *ngIf="authService.isAuthenticated()" class='nav navbar-nav navbar-right'>
+				<a class='logout' (click)="logOut()">LogOut</a>
+
+				<li id="profile-text">
+					<label><i class="glyphicon glyphicon-user"></i>{{authService.userProfile?.nickname | uppercase}}</label>
+					<img [src]="authService.userProfile?.picture | safe" alt="No-Image" class='img-circle' width='20px' height='20px' />
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<app-login-page *ngIf="!authService.isAuthenticated()"></app-login-page>
+<router-outlet *ngIf="authService.isAuthenticated()"></router-outlet>
+

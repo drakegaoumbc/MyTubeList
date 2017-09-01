@@ -1,0 +1,15 @@
+<div *ngIf="video">
+	<span>{{video.title}}</span>
+	<div class='embed-responsive embed-responsive-16by9'>
+		<iframe id="existing-iframe-example"
+	        width="" height="360"
+	        [src]="video.url | safe" 
+	        frameborder="0"
+	        allowfullscreen
+		></iframe>
+	</div>
+	<br>
+	<div class="breadcrumb">
+		<button type='submit' class='btn btn-default' (click)="save($event)">Add As Favorite</button>
+	</div>
+ </div>
