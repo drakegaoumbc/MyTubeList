@@ -64,20 +64,28 @@ export class MainBodyComponent implements OnInit, OnDestroy {
 
   public getProfile(): void {
     if(this.authService.userProfile) {
-      this.userProfile = this.authService.userProfile;
+      //this.userProfile = this.authService.userProfile;
       if(!localStorage.getItem("userName")) {
-        localStorage.setItem("userName", this.userProfile.nickname);
+        localStorage.setItem("userName", this.authService.userProfile.nickname);
       } 
-      console.log(this.userProfile);
+
+      if(!localStorage.getItem("userPicture")) {
+          localStorage.setItem("userPicture", this.authService.userProfile.picture);
+        }
+      //console.log(this.userProfile);
 
     } else {
       const self = this;
       this.authService.getProfile((err, profile) => {
-        self.userProfile = profile;    
+        //self.userProfile = profile;    
         if(!localStorage.getItem("userName")) {
           localStorage.setItem("userName", profile.nickname);
         }  
-        console.log(this.userProfile);
+
+        if(!localStorage.getItem("userPicture")) {
+          localStorage.setItem("userPicture", profile.picture);
+        }
+        //console.log(this.userProfile);
       });
     }
   }

@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { VideoServiceComponent } from '../video-service/video-service.component';
 import { VideoProperty } from '../video-property';
 import { YoutubeClientComponent } from '../youtube-client/youtube-client.component';
+import { AuthService } from '../auth-service';
+
 //import * as gapi from 'gapi-client/index';
 
 declare var $: any;
@@ -19,7 +21,7 @@ export class VideoVisitedComponent implements OnInit, OnDestroy {
   videoVisited: VideoProperty[];
   videosRet: any;
 
-  constructor(private videoService: VideoServiceComponent) {};
+  constructor(private videoService: VideoServiceComponent, private authService: AuthService) {};
 
   getVideos(): void {
     // subscribe is for a observable return
@@ -42,6 +44,18 @@ export class VideoVisitedComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
   	this.getVideos();
+    if(!this.authService.userProfile) {
+      this.authService.getProfile((err, profile) => {
+        if(!localStorage.getItem("userName")) {
+          localStorage.setItem("userName", profile.nickname);
+        } 
+
+        if(!localStorage.getItem("userPicture")) {
+          localStorage.setItem("userPicture", profile.picture);
+        }  
+      });
+    }
+
   }
 
   ngOnDestroy() {

@@ -15,7 +15,7 @@ mongoose.connect('mongodb://localhost:27017/mytubelist', {useMongoClient: true})
 app.use(body_parser.json());
 app.use(body_parser.urlencoded({extended: false}));
 
-//app.use(cors()); 
+app.use(cors()); 
 // for cross orgin or same host
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -33,6 +33,6 @@ app.get('/getvideos/:username', videoServiceController.getVideos);
 app.get('/getvideo/:videoid/:username', videoServiceController.findOne);
 app.post('/delvideo/:videoid/:username', videoServiceController.delVideo);
 
-app.listen(PORT, function() {
+app.listen(PORT, '0.0.0.0', function() {
 	console.log('listening on port 3000');
 });

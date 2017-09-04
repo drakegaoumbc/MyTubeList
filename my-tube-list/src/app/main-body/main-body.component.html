@@ -1,5 +1,6 @@
 <br>
-<div class='container-fluid'>
+<app-login-page *ngIf="!authService.isAuthenticated()"></app-login-page>
+<div *ngIf="authService.isAuthenticated()" class='container-fluid'>
 	<div class='row'>
 		<div class='col-lg-3 col-md-3 col-sm-3'>
 			<ul class="list-group">

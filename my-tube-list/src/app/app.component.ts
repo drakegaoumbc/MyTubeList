@@ -12,9 +12,14 @@ export class AppComponent implements OnInit {
   title = 'MyTubeList';
   userName: string;
   userPicture: string;
+  show:boolean = false;
 
   isExpanded: boolean = false;
   constructor(public authService: AuthService) {
+  }
+
+  toggleCollapse() {
+    this.show = !this.show
   }
 
   public login(): void {

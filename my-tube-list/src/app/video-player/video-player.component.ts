@@ -19,12 +19,12 @@ export class VideoPlayerComponent implements OnInit {
 
   save(e) {
   	this.videoService.findOne(this.video._id, this.video.userName).subscribe(res => {
-  		if(Array.isArray(res) || res !== null) {
+  		if(res.length !== 0 && res !== null ) {
   			console.log('existed');
+        console.log(res);
   			return;
 
-  		} else if(res === null) {
-        this.video.userName = localStorage.getItem("userName");
+  		} else if(res === null || res.length === 0) {
         console.log(this.video);
   			this.videoService.safeVideo(this.video)
   							 .subscribe(res => {

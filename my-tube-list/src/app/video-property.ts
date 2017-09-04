@@ -6,5 +6,6 @@ export class VideoProperty {
 	thumbnailUrl: string;
 	description: string;
 	userName: string;
+	videoId: string;
 	userEmail: string;
 }

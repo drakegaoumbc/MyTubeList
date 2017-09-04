@@ -14,7 +14,7 @@ export class AuthService {
 	    domain: 'drakegao-test.auth0.com',
 	    responseType: 'token id_token',
 	    audience: 'https://drakegao-test.auth0.com/userinfo',
-	    redirectUri: 'http://localhost:4200',      
+	    redirectUri: "http://71.163.115.221:4200", //'http://192.168.1.188:4200',      
 	    scope: 'openid profile'
 	});
 
@@ -56,6 +56,11 @@ export class AuthService {
 	    if(localStorage.getItem("userName")) {
 	      localStorage.removeItem("userName");
 	    } 
+
+	    if(localStorage.getItem("userPicture")) {
+	      localStorage.removeItem("userPicture");
+	    } 
+	    console.log(localStorage);
 	    // Go back to the home route
 	    this.router.navigate(['/']);
 	}

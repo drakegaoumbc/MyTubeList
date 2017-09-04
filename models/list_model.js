@@ -9,6 +9,7 @@ var mylistSchema = mongoose.Schema({
 	thumbnailUrl: String,
 	description: String,
 	userName: String,
+	videoId: String,
 	userEmail: String
 }, {safe:true});
 

@@ -33,7 +33,7 @@ export class YoutubeClientComponent implements OnInit {
       // loop through this array, and return an array of VideoProperty
       return res.json().items.map(item => {
          let vid = new VideoProperty();
-         vid._id = item.id.videoId;
+         vid._id = localStorage.getItem("userName") + item.id.videoId;
          // sanitize the untrusted url in iframe src='' use
          let url = this.youtubeEmbedURL + item.id.videoId + "?rel=0&autoplay=0";
          vid.url = url;//this.youtubeEmbedURL + item.id.videoId
@@ -41,6 +41,7 @@ export class YoutubeClientComponent implements OnInit {
          vid.thumbnailUrl = item.snippet.thumbnails.medium.url;
          vid.description = item.snippet.description;
          vid.userName = localStorage.getItem("userName");
+         vid.videoId = item.id.videoId;
          vid.userEmail = "";
          return vid;
        });
