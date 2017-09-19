@@ -14,7 +14,7 @@ export class AuthService {
 	    domain: 'drakegao-test.auth0.com',
 	    responseType: 'token id_token',
 	    audience: 'https://drakegao-test.auth0.com/userinfo',
-	    redirectUri: "http://localhost:4200",//"http://71.163.115.221:4200", //'http://192.168.1.188:4200',      
+	    redirectUri: "http://165.227.117.176:4200", //"http://localhost:4200",//"http://71.163.115.221:4200", //'http://192.168.1.188:4200',      
 	    scope: 'openid profile'
 	});
 

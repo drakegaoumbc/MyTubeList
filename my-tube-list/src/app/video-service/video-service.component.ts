@@ -20,7 +20,7 @@ import { VideoProperty } from '../video-property';
 export class VideoServiceComponent implements OnInit, OnDestroy {
   private req: any;
   videoListData: any;
-  private videos_uri: string = "http://localhost:3000/";//'http://71.163.115.221:3000/';
+  private videos_uri: string = "http://165.227.117.176:3000";//"http://localhost:3000/";//'http://71.163.115.221:3000/';
 
   constructor(private http: Http) {}
 
