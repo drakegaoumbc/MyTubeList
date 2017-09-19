@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 import { VideoProperty } from '../video-property'
 import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
 import { Pipe, PipeTransform } from '@angular/core';
+import 'rxjs/add/operator/map';
 
 const youtubeAPI: string = "AIzaSyCnK8tBC8YKtiQ6dtH4oo-hPJJvHwZV3vU";
 

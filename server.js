@@ -33,6 +33,6 @@ app.get('/getvideos/:username', videoServiceController.getVideos);
 app.get('/getvideo/:videoid/:username', videoServiceController.findOne);
 app.post('/delvideo/:videoid/:username', videoServiceController.delVideo);
 
-app.listen(PORT, '0.0.0.0', function() {
+app.listen(PORT, "0.0.0.0", function() {
 	console.log('listening on port 3000');
 });

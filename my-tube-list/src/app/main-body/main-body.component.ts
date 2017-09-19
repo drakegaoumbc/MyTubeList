@@ -31,15 +31,7 @@ export class MainBodyComponent implements OnInit, OnDestroy {
   constructor( private tubeClient: YoutubeClientComponent, private authService: AuthService ) { 
      
   }
-
-  // for search click
-  /*searchVids(): void {
-    this.vids_req = this.tubeClient.searchVids(this.search_query)
-    .subscribe(videos => {
-      this.videoList = videos;
-    });
-  }*/
-
+ 
   // auto pop 
   searchVidsObs(query: string): any {
     return this.tubeClient.searchVids(query);
