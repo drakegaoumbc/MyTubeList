@@ -20,11 +20,12 @@ import { VideoProperty } from '../video-property';
 export class VideoServiceComponent implements OnInit, OnDestroy {
   private req: any;
   videoListData: any;
-  private videos_uri: string = 'http://71.163.115.221:3000/';
+  private videos_uri: string = "http://localhost:3000/";//'http://71.163.115.221:3000/';
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) {}
 
   getVideos(userName: string): Observable<[VideoProperty]> {
+    
     const headers = new Headers({
       'Content-Type': 'application/json; charset=UTF-8',
       'Access-Control-Allow-Origin': '*',
@@ -32,6 +33,7 @@ export class VideoServiceComponent implements OnInit, OnDestroy {
       'Access-Control-Allow-Methods': 'GET,POST,PUT,DELETE,OPTIONS'
     });
     let options = new RequestOptions({headers: headers});
+    console.log(userName);
   	return this.http.get(this.videos_uri + "getvideos/" + userName, options)
   					.map(res => res.json() as VideoProperty[]);
   }

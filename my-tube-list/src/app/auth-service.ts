@@ -14,7 +14,7 @@ export class AuthService {
 	    domain: 'drakegao-test.auth0.com',
 	    responseType: 'token id_token',
 	    audience: 'https://drakegao-test.auth0.com/userinfo',
-	    redirectUri: "http://71.163.115.221:4200", //'http://192.168.1.188:4200',      
+	    redirectUri: "http://localhost:4200",//"http://71.163.115.221:4200", //'http://192.168.1.188:4200',      
 	    scope: 'openid profile'
 	});
 
@@ -29,6 +29,7 @@ export class AuthService {
 		this.auth0.parseHash((err, authResult) => {
 			if(authResult && authResult.accessToken && authResult.idToken) {
 				let self = authResult;
+				console.log(authResult);
 				this.auth0.parseHash((err, authResult) => {
 					console.log(self);
 					window.location.hash = '';
@@ -36,6 +37,7 @@ export class AuthService {
 					this.router.navigate(['/home']);
 				});
 			} else if(err) {
+				
 				this.router.navigate(['/login']);
 			}
 		});

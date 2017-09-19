@@ -16,6 +16,7 @@ module.exports.create = function(req, res) {
 module.exports.getVideos = function(req, res) {
 	Mylist.find({userName: req.params.username}, function(err, results) {
 		if(err) {
+			console.log(err);
 			res.send(err);
 		}
 		res.json(results);

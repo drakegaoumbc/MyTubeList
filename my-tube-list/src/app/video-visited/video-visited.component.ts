@@ -59,6 +59,6 @@ export class VideoVisitedComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-  	this.req.unsubscribe();
+  	//this.req.unsubscribe();
   }
 }
